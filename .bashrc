@@ -116,3 +116,10 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# alias for my config files git system. You don't want to pollute $HOME with git
+# files, so we have a .dotfiles directory there, where git lives.  To call git
+# in that directory but with $HOME as working tree, use the below alias instead
+# of git.
+alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
+
