@@ -81,9 +81,12 @@ set wrap
 set hlsearch
 
 "To make vim start in directory of opened file
+"echom %:p:h " WIP
 cd %:h
 
-"syntax on
+" WIP add language specific stuff to turn of the default syntac highlighting
+" for languages with special plugins (C, C++, and Java and Python I think.)
+syntax on
 
 " Turn of beep. I want to punch the guy that set it on by default.
 set vb
