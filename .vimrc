@@ -84,7 +84,7 @@ set hlsearch
 "echom %:p:h " WIP
 cd %:h
 
-" WIP add language specific stuff to turn of the default syntac highlighting
+" TODO add language specific stuff to turn of the default syntac highlighting
 " for languages with special plugins (C, C++, and Java and Python I think.)
 syntax on
 
