@@ -28,6 +28,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias l='ls -FhvG'
 alias la='l -A'
 
+# Shorter source command
+alias so='source'
+
 # cs = cd + ls
 function cs() { cd "$@" && l; }
 # Because I keep typing the wrong command
