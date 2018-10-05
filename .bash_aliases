@@ -36,6 +36,11 @@ function cs() { cd "$@" && l; }
 # Because I keep typing the wrong command
 alias cl='cs'
 
+# hex x takes decimal x to its hexdecimal representation
+function dec() { echo "$((0x$@))"; }
+# dec x takes hexdecimal x to its decimal representation WIP
+function hex() { echo "ibase=10;obase=16;$@" | bc; }
+
 # alias for my config files git system. You don't want to pollute $HOME with git
 # files, so we have a .dotfiles directory there, where git lives.  To call git
 # in that directory but with $HOME as working tree, use the below alias instead
