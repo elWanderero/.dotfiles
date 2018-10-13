@@ -80,9 +80,10 @@ set wrap
 "highlight searched words
 set hlsearch
 
-"To make vim start in directory of opened file
-"echom %:p:h " WIP
-cd %:h
+" If opened with file, make vim start in directory of that file.
+if @% != ""
+    cd %:h
+endif
 
 " TODO add language specific stuff to turn of the default syntac highlighting
 " for languages with special plugins (C, C++, and Java and Python I think.)
