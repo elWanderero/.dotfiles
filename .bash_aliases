@@ -19,6 +19,9 @@ alias ll='ls -alF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# Simple command to print ip adress
+alias ip="ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print \$2}'" 
+
 #---------------------Mina egna hittepå-grejer ---------------------
 
 # Nicer ls: -f for file type indication (/ for dir, @ for link).
