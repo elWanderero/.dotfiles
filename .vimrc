@@ -40,7 +40,8 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'syntastic'
 " YouCompleteMe autocomplete. Needs special installation, google it.
 " Uses WAY to much memory (560 MB) for school though :(.
-"Plugin 'Valloric/YouCompleteMe
+" Also I think it may only work with MacVim.
+" Plugin 'Valloric/YouCompleteMe'
 "" Gruvbox nice colour scheme!
 Plugin 'morhetz/gruvbox'
 "" Ctrlp to show paths when using :e (which opens other files)
