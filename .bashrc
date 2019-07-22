@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells. For most other stuff,
 # by interactive shells, which may be log-in or not.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -85,13 +86,22 @@ fi
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 # The below if-fi loads the .bash_aliases.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f "$HOME/.bash_aliases" ]; then
+    # shellcheck source=/dev/null
+    . "$HOME/.bash_aliases"
 fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+if [ -f "/etc/bash_completion" ] && ! shopt -oq posix; then
+    # shellcheck source=/dev/null
     . /etc/bash_completion
+fi
+
+# If this path exists, then postgres is probably installed, and  that
+# is probably its desired data area. We set the environemt variable
+# for it here so that pg_ctl does not have to be called with a path.
+if [ -d '/usr/local/var/postgres' ]; then
+    export PGDATA=/usr/local/var/postgres
 fi
