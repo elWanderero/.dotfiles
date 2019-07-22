@@ -1,3 +1,4 @@
+#!/bin/bash
 # *.profile files are read by "login" shells, i.e. when logging in directly to a shell,
 # such as when running Ubuntu on Windows, or when using SSH. .profile is the general
 # file. .bash_profile (this file) is for Bash. If it exists Bash ignores .profile.
