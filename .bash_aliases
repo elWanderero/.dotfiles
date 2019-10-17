@@ -13,8 +13,6 @@ fi
 
 # some more ls aliases
 alias ll='ls -alF'
-#alias la='ls -A'
-#alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -32,9 +30,6 @@ alias ip="ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print \$2}'"
 alias l='ls -FhvG'
 alias la='l -A'
 
-# Shorter source command
-alias so='source'
-
 # cs = cd + ls
 function cs() { cd "$@" && l; }
 # Because I keep typing the wrong command
@@ -51,3 +46,21 @@ function hex() { echo "ibase=10;obase=16;$@" | bc; }
 # of git.
 alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
 
+# Atlas antibodies
+alias aapi='conda activate atlas-int && export PYTHONPATH=${HOME}/atlas/prometheus/apps/integration && export FLASK_APP=application.integration.integration && export FLASK_ENV=development && export FLASK_DEBUG=1'
+
+alias aapi-start='aapi && cd $HOME/atlas/prometheus/apps/integration && flask run --with-threads -p 5002'
+
+alias aapw='conda activate atlas-web && nvm use atlas_node && export PYTHONPATH=${HOME}/atlas/prometheus/apps/prometheus_webapp && export FLASK_APP=prometheus_webapp && export FLASK_ENV=development && export FLASK_DEBUG=1'
+
+alias aapw-start='aapw && cd $HOME/atlas/prometheus/apps/prometheus_webapp && flask run --with-threads -p 5001'
+
+alias backups='$HOME/atlas/docker/backups'
+
+alias go-alembic='cl $HOME/atlas/prometheus/apps/integration/application/alembic/prometheus'
+
+alias go-int='cl ${HOME}/atlas/prometheus/apps/integration'
+
+alias go-web='cl ${HOME}/atlas/prometheus/apps/prometheus_webapp'
+
+alias go-docker='cl ${HOME}/atlas/docker'
