@@ -120,3 +120,6 @@ if [ -d /usr/libexec/java_home ]; then
 fi
 
 eval "$(thefuck --alias)"
+
+# Always compile rust targetting the local CPU. Allows for most aggressive optimisations.
+export RUSTFLAGS='-Ctarget-cpu=native'
