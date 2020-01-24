@@ -19,6 +19,7 @@ alias ll='ls -alF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Simple command to print ip adress
+# shellcheck disable=SC2142
 alias ip="ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print \$2}'" 
 
 #---------------------Mina egna hittepå-grejer ---------------------
@@ -38,6 +39,7 @@ alias cl='cs'
 # hex x takes decimal x to its hexdecimal representation
 function dec() { echo "$((0x$@))"; }
 # dec x takes hexdecimal x to its decimal representation WIP
+# shellcheck disable=SC2145
 function hex() { echo "ibase=10;obase=16;$@" | bc; }
 
 # alias for my config files git system. You don't want to pollute $HOME with git
