@@ -68,29 +68,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# set PATH so it includes user's private /bin if it exists. Stuff like this should be
-# done here and not in .bash_profile, because we want environment variables to be
-# usable in interactive shells.
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# Also include my private /scripts in PATH, where .sh scripts may be kept. See the
-# comment above the bin-include for why we put this here and not in .bash_profile.
-if [ -d "$HOME/scripts" ] ; then
-    PATH="$HOME/scripts:$PATH"
-fi
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-# The below if-fi loads the .bash_aliases.
-if [ -f "$HOME/.bash_aliases" ]; then
-    # shellcheck source=/dev/null
-    . "$HOME/.bash_aliases"
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -119,7 +96,48 @@ if [ -d /usr/libexec/java_home ]; then
     export JAVA_HOME
 fi
 
+# init of thefuck tool.
 eval "$(thefuck --alias)"
 
 # Always compile rust targetting the local CPU. Allows for most aggressive optimisations.
 export RUSTFLAGS='-Ctarget-cpu=native'
+
+###########################
+#          PATHS          #
+###########################
+
+# set PATH so it includes user's private /bin if it exists. Stuff like this should be
+# done here and not in .bash_profile, because we want environment variables to be
+# usable in interactive shells.
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# Also include my private /scripts in PATH, where .sh scripts may be kept. See the
+# comment above the bin-include for why we put this here and not in .bash_profile.
+if [ -d "$HOME/scripts" ] ; then
+    PATH="$HOME/scripts:$PATH"
+fi
+
+# Add . to PATH so we can run scripts in . without the ./ prefix
+# Add it last to give it lowest priority to avoid problems
+PATH=$PATH:.
+
+
+###########################
+#         IMPORTS         #
+###########################
+
+# Alias definitions in separate file. Also functions go in there.
+if [ -f "$HOME/.bash_aliases" ]; then
+    # shellcheck source=/dev/null
+    . "$HOME/.bash_aliases"
+fi
+
+# Work stuff
+if [ -f "$HOME/.bash_atlass" ]; then
+    # shellcheck source=/dev/null
+    . "$HOME/.bash_atlas"
+fi
+
+
