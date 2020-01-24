@@ -1,5 +1,5 @@
 "-------------------------------------------------------------------+
-"					   VUNDLE PLUGIN MANAGER SHIT					|
+"                    VUNDLE PLUGIN MANAGER SHIT                     |
 "-------------------------------------------------------------------+
 set nocompatible              " be iMprovedi, required
 filetype off                  " required

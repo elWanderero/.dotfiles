@@ -45,22 +45,3 @@ function hex() { echo "ibase=10;obase=16;$@" | bc; }
 # in that directory but with $HOME as working tree, use the below alias instead
 # of git.
 alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
-
-# Atlas antibodies
-alias aapi='conda activate atlas-int && export PYTHONPATH=${HOME}/atlas/prometheus/apps/integration && export FLASK_APP=application.integration.integration && export FLASK_ENV=development && export FLASK_DEBUG=1'
-
-alias aapi-start='aapi && cd $HOME/atlas/prometheus/apps/integration && flask run --with-threads -p 5002'
-
-alias aapw='conda activate atlas-web && nvm use atlas_node && export PYTHONPATH=${HOME}/atlas/prometheus/apps/prometheus_webapp && export FLASK_APP=prometheus_webapp && export FLASK_ENV=development && export FLASK_DEBUG=1'
-
-alias aapw-start='aapw && cd $HOME/atlas/prometheus/apps/prometheus_webapp && flask run --with-threads -p 5001'
-
-alias backups='$HOME/atlas/docker/backups'
-
-alias go-alembic='cl $HOME/atlas/prometheus/apps/integration/application/alembic/prometheus'
-
-alias go-int='cl ${HOME}/atlas/prometheus/apps/integration'
-
-alias go-web='cl ${HOME}/atlas/prometheus/apps/prometheus_webapp'
-
-alias go-docker='cl ${HOME}/atlas/docker'
