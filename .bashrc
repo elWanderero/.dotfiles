@@ -139,5 +139,3 @@ if [ -f "$HOME/.bash_atlass" ]; then
     # shellcheck source=/dev/null
     . "$HOME/.bash_atlas"
 fi
-
-
