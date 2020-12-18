@@ -36,6 +36,8 @@ function cs() { cd "$@" && l; }
 # Because I keep typing the wrong command
 alias cl='cs'
 
+alias ..='cs ..'
+
 # hex x takes decimal x to its hexdecimal representation
 function dec() { echo "$((0x$@))"; }
 # dec x takes hexdecimal x to its decimal representation WIP
