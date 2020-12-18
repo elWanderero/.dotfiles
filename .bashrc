@@ -134,8 +134,14 @@ if [ -f "$HOME/.bash_aliases" ]; then
     . "$HOME/.bash_aliases"
 fi
 
+# git autocomplete, including branches
+# shellcheck source=/Users/danielzs/scripts/.git-completion.bash
+if [ -f "$HOME/scripts/.git-completion.bash" ]; then
+  . "$HOME/scripts/.git-completion.bash"
+fi
+
 # Work stuff
-if [ -f "$HOME/.bash_atlass" ]; then
+if [ -f "$HOME/.bash_atlas" ]; then
     # shellcheck source=/dev/null
     . "$HOME/.bash_atlas"
 fi
