@@ -145,3 +145,5 @@ if [ -f "$HOME/.bash_atlas" ]; then
     # shellcheck source=/dev/null
     . "$HOME/.bash_atlas"
 fi
+
+source "$HOME/.cargo/env"
