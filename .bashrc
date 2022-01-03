@@ -83,11 +83,16 @@ if [ -d '/usr/local/var/postgres' ]; then
     export PGDATA=/usr/local/var/postgres
 fi
 
-# NVM
+# NVM installations location
 if [ -d "$HOME/.nvm" ]; then
     export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    # For nvm installed regularly, with curl and a shell script:
+    # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+# For NVM installed with brew
+if brew_nvm_dir=$(brew --prefix "nvm"); then
+    [ -s "$brew_nvm_dir/nvm.sh" ] && \. "$brew_nvm_dir/nvm.sh"  # This loads nvm
 fi
 
 # For Android Studio. Path exists if JDK exists on mac, I think.
