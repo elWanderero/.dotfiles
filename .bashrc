@@ -92,6 +92,7 @@ if [ -d "$HOME/.nvm" ]; then
 fi
 # For NVM installed with brew
 if brew_nvm_dir=$(brew --prefix "nvm"); then
+    # shellcheck source=/usr/local/opt/nvm/nvm.sh
     [ -s "$brew_nvm_dir/nvm.sh" ] && \. "$brew_nvm_dir/nvm.sh"  # This loads nvm
 fi
 
@@ -115,9 +116,11 @@ export RUSTFLAGS='-Ctarget-cpu=native'
 if type brew &>/dev/null; then
   HOMEBREW_PREFIX="$(brew --prefix)"
   if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
+    # shellcheck source=/usr/local/etc/profile.d/bash_completion.sh
     source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
   else
     for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
+      # shellcheck disable=1090
       [[ -r "$COMPLETION" ]] && source "$COMPLETION"
     done
   fi
@@ -161,20 +164,21 @@ PATH=$PATH:.
 
 # Alias definitions in separate file. Also functions go in there.
 if [ -f "$HOME/.bash_aliases" ]; then
-    # shellcheck source=/dev/null
+    # shellcheck source=/Users/danielzs/.bash_aliases
     . "$HOME/.bash_aliases"
 fi
 
 # git autocomplete, including branches
-# shellcheck source=/Users/danielzs/scripts/.git-completion.bash
 if [ -f "$HOME/scripts/.git-completion.bash" ]; then
+  # shellcheck source=/Users/danielzs/scripts/.git-completion.bash
   . "$HOME/scripts/.git-completion.bash"
 fi
 
 # Work stuff
 if [ -f "$HOME/.bash_atlas" ]; then
-    # shellcheck source=/dev/null
+    # shellcheck source=/Users/danielzs/.bash_atlas
     . "$HOME/.bash_atlas"
 fi
 
+# shellcheck source=/Users/danielzs/.cargo/env
 source "$HOME/.cargo/env"
