@@ -108,6 +108,11 @@ eval "$(thefuck --alias)"
 # Always compile rust targetting the local CPU. Allows for most aggressive optimisations.
 export RUSTFLAGS='-Ctarget-cpu=native'
 
+# pyenv, if pyenv has not been initiated from .bash_profile
+# if command -v pyenv >/dev/null; then eval "$(pyenv init -)"; fi
+
+# eval "$(pyenv virtualenv-init -)"
+
 ###########################
 #       AUTOCOMPLETE      #
 ###########################
@@ -175,9 +180,13 @@ if [ -f "$HOME/scripts/.git-completion.bash" ]; then
 fi
 
 # Work stuff
-if [ -f "$HOME/.bash_atlas" ]; then
-    # shellcheck source=/Users/danielzs/.bash_atlas
-    . "$HOME/.bash_atlas"
+if [ -f "$HOME/.bash_purspot" ]; then
+    # shellcheck source=/Users/danielzs/.bash_purspot
+    . "$HOME/.bash_purspot"
+fi
+if [ -f "$HOME/.bash_consid" ]; then
+    # shellcheck source=/Users/danielzs/.bash_consid
+    . "$HOME/.bash_consid"
 fi
 
 # shellcheck source=/Users/danielzs/.cargo/env

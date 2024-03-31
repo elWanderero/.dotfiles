@@ -12,7 +12,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alhF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -28,7 +28,7 @@ alias ip="ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print \$2}'"
 # -h for sizes in kB, MB etc instead of frickin bytes.
 # -v for natural order (10 after 1).
 # G for colours.
-alias l='ls -FhvG'
+alias l='ls -FG'
 alias la='l -A'
 
 # cs = cd + ls
