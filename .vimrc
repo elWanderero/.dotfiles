@@ -1,124 +1,127 @@
-"-------------------------------------------------------------------+
-"                    VUNDLE PLUGIN MANAGER SHIT                     |
-"-------------------------------------------------------------------+
-set nocompatible              " be iMprovedi, required
-filetype off                  " required
+""""""
+" UI "
+""""""
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" disable vi compatibility
+set nocompatible
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" automatically load changed files
+set autoread
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo. [Apparantly to do git stuff in vim]
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub. [For fast file navigation]
-"Plugin 'git://git.wincent.com/command-t.git'
+" auto-reload vimrc
+autocmd! bufwritepost vimrc source ~/.vim/vimrc
+"autocmd! bufwritepost gvimrc source ~/.vim/gvimrc
 
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
+" show the filename in the window titlebar
+set title
 
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly. [For writing HTML]
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
+" set encoding
+set encoding=utf-8
 
-"------------Daniel's plugins---------------
-" Better markdown higlighting
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-" Syntax checking on :w. Needs compiler to do the work.
-Plugin 'syntastic'
-" YouCompleteMe autocomplete. Needs special installation, google it.
-" Uses WAY to much memory (560 MB) for school though :(.
-" Also I think it may only work with MacVim.
-" Plugin 'Valloric/YouCompleteMe'
-"" Gruvbox nice colour scheme!
-Plugin 'morhetz/gruvbox'
-"" Ctrlp to show paths when using :e (which opens other files)
-Plugin 'ctrlpvim/ctrlp.vim'
+" directories for swp files
+set backupdir=~/.vim/backup
+set directory=~/.vim/backupf
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"--------------------------VUNDLE END------------------------------+
+" display incomplete commands at the bottom
+set showcmd
 
-" Default tab sizes if not specified per language in ~/.vim/ftpluging/language.vim
-" tabstop:          Width of tab character. Probably keep as default if expandtab
-" softtabstop:      Fine tunes the amount of white space to be added
-" shiftwidth        Determines the amount of whitespace to add in normal mode
-" expandtab:        When on uses space instead of tabs
-set expandtab
-set softtabstop=4
-set shiftwidth=4
+" mouse support
+set mouse=a
 
-"""colorscheme pablo
-"""set background =dark
+" line numbers
+" set number
 
-"wordrap
-set wrap
+" highlight cursor line
+set cursorline
 
-"highlight searched words
-set hlsearch
+" wrapping stuff
+" set textwidth=80
+" set colorcolumn=80
 
-" If opened with file, make vim start in directory of that file.
-if @% != ""
-    cd %:h
-endif
+" ignore whitespace in diff mode
+set diffopt+=iwhite
 
-" TODO add language specific stuff to turn of the default syntac highlighting
-" for languages with special plugins (C, C++, and Java and Python I think.)
-syntax on
+" Be able to arrow key and backspace across newlines
+set whichwrap=bs<>[]
 
-" Turn of beep. I want to punch the guy that set it on by default.
-set vb
-set t_vb=
+" Status bar
+set laststatus=2
 
-" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_cpp_compiler = 'g++'
-" Maybe goes at the the end of the line below: -stdlib=libc++
-let g:syntastic_cpp_compiler_options = ' -std=gnu++11 -I /info/DD2387/labs/cxxtest/'
-" The location list is the intrusive window with error. Always populate keeps
-" it updated or something, but could interfere with other plugins.
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+" remember last cursor position
+autocmd BufReadPost *
+	\ if line("'\"") > 0 && line("'\"") <= line("$") |
+	\ 	exe "normal g`\"" |
+	\ endif
 
-" Gruvbox plugin stuff.
-colorscheme gruvbox
-set background=dark
-" 't_ut= ' needed to make tmux use correct background colour on certain
-" systems. In Linux on Windows 10 gruvbox doesn't work at all without this.
-" When SSH-ing to school with Putty, removing this command will toggle gruvbox
-" IN THE TERMINAL OUTSIDE OF VIM every time something is saved with :wq or :x
-" (not :w :q though) (hella strange).
-set t_ut=
+" show '>   ' at the beginning of lines that are automatically wrapped
+set showbreak=>\ \ \ 
 
-" esc -> capslock experiment. Relies on the non-vim xmodmap.
-" Maybe only works for X11-interactions.
-au VimEnter * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-au VimLeave * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+" enable completion
+set ofu=syntaxcomplete#Complete
+
+" make laggy connections work faster
+set ttyfast
+
+" let vim open up to 100 tabs at once
+set tabpagemax=100
+
+" case-insensitive filename completion
+set wildignorecase
+
+"""""""""""""
+" Searching "
+"""""""""""""
+
+set hlsearch "when there is a previous search pattern, highlight all its matches
+set incsearch "while typing a search command, show immediately where the so far typed pattern matches
+set ignorecase "ignore case in search patterns
+set smartcase "override the 'ignorecase' option if the search pattern contains uppercase characters
+set gdefault "imply global for new searches
+
+"""""""""""""
+" Indenting "
+"""""""""""""
+
+" When auto-indenting, use the indenting format of the previous line
+set copyindent
+" When on, a <Tab> in front of a line inserts blanks according to 'shiftwidth'.
+" 'tabstop' is used in other places. A <BS> will delete a 'shiftwidth' worth of
+" space at the start of the line.
+set smarttab
+" Copy indent from current line when starting a new line (typing <CR> in Insert
+" mode or when using the "o" or "O" command)
+set autoindent
+" Automatically inserts one extra level of indentation in some cases, and works
+" for C-like files
+set smartindent
+
+"""""""""
+" Theme "
+"""""""""
+
+syntax enable
+set background=dark "uncomment this if your terminal has a dark background
+
+""""""""
+" GVim "
+""""""""
+
+"disable cursor blinking
+set gcr=n:blinkon0
+
+"remove menu bar
+set guioptions-=m
+
+"""""""""""""""""""""
+" Language-Specific "
+"""""""""""""""""""""
+
+" load the plugin and indent settings for the detected filetype
+filetype plugin indent on
+
+" Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+au BufRead,BufNewFile *.html.erb set ft=eruby
+
+" Add json syntax highlighting
+au BufNewFile,BufRead *.json set ft=json syntax=javascript
