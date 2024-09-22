@@ -39,8 +39,6 @@ fi
 
 # Without this .bashrc is not sourced when logging directly into a terminal, such as when
 # SSH-ing in. The '.' is because the file is "sourced," not "loaded." Whatever that means.
-# Note the conditional: Only include .bashrc if it exists.
-if [ -f "$HOME/.bashrc" ]; then
-    . "$HOME/.bashrc"
-fi
+. "$HOME/.bashrc"
+
 . "$HOME/.cargo/env"
