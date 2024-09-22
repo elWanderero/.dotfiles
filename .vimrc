@@ -125,3 +125,11 @@ au BufRead,BufNewFile *.html.erb set ft=eruby
 
 " Add json syntax highlighting
 au BufNewFile,BufRead *.json set ft=json syntax=javascript
+
+"""""""""""""""""
+" My Own Things "
+"""""""""""""""""
+
+" Show line number, line length etc bottom-right
+set ruler
+
